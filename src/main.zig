@@ -3,7 +3,7 @@ const expect = std.testing.expect;
 
 // const constant: i32 = 42; // signed 32-bit integer
 // var mutable: u32 = 42; // unsigned 32-bit integer
-                    
+
 // @as performs an explicit type coercion
 // const inferred_constant: @as(i32, 5);
 // var inferred_variable: @as(u32, 5);
