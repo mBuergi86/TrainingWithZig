@@ -50,4 +50,32 @@ pub fn main() !void {
     std.debug.print("e_ptr.len: {}\n", .{e_ptr.len});
 
     std.debug.print("\n", .{});
+
+    // Sentinel terminated pointer
+    array[3] = 0;
+    const f_ptr: [*:0]const u8 = array[0..3 :0];
+
+    std.debug.print("f_ptr[1]: {}, type of f_ptr: {}\n", .{ f_ptr[0], @TypeOf(f_ptr) });
+
+    std.debug.print("\n", .{});
+
+    const address = @intFromPtr(f_ptr);
+
+    std.debug.print("address: {}, type of address: {}\n", .{ address, @TypeOf(address) });
+
+    const g_ptr: [*:0]const u8 = @ptrFromInt(address);
+
+    std.debug.print("g_ptr[1]: {}, type of g_ptr: {}\n", .{ g_ptr[0], @TypeOf(g_ptr) });
+
+    std.debug.print("\n", .{});
+
+    // If you need a pointer that can be null like in C, use an optional pointer
+    var h_ptr: ?*const usize = null;
+
+    std.debug.print("h_ptr: {?}, type of h_ptr: {}\n", .{ h_ptr, @TypeOf(h_ptr) });
+
+    h_ptr = &address;
+
+    std.debug.print("h_ptr.?.*: {}, type of h_ptr: {}\n", .{ h_ptr.?.*, @TypeOf(h_ptr) });
+    std.debug.print("h_ptr size: {}, *usize size: {}\n", .{ @sizeOf(@TypeOf(h_ptr)), @sizeOf(*usize) });
 }
