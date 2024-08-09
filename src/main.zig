@@ -1,5 +1,6 @@
 const std = @import("std");
 const expect = std.testing.expect;
+const time = std.time;
 
 // const constant: i32 = 42; // signed 32-bit integer
 // var mutable: u32 = 42; // unsigned 32-bit integer
@@ -15,11 +16,14 @@ const expect = std.testing.expect;
 // arrays
 const a = [5]u8{ 'h', 'e', 'l', 'l', 'o' };
 const b = [_]u8{ 'h', 'e', 'l', 'l', 'o' };
+var testA = "Hello World";
 
 const length = b.len;
 
 pub fn main() void {
     std.debug.print("Hello, {s}!\n", .{"world"});
     std.debug.print("Hello, {s}!\n", .{b});
-    std.debug.print("{d}", .{length});
+    std.debug.print("{d}\n", .{length});
+    std.debug.print("{s}\n", .{testA});
+    time.sleep(1000);
 }
